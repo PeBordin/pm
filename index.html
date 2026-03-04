@@ -3,51 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Quality Full Screen Fit</title>
+    <title>Air Quality Fullscreen</title>
     <style>
-        * {
+        /* 1. ตั้งค่าหน้ากระดาษให้เป็น 1920x1080 */
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            width: 100%;
-            height: 100%;
+            width: 1920px;
+            height: 1080px;
             overflow: hidden;
-            background-color: #ffffff;
+            background-color: #ffffff; /* เปลี่ยนสีพื้นหลังได้ตามใจชอบ */
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* ส่วนควบคุมการขยายร่าง */
-        .airvisual-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 280px; /* ขนาดตั้งต้นของ Widget */
-            height: 400px; /* ความสูงโดยประมาณของ Widget */
-            
-            /* ใช้ฟังก์ชันขยายตามความกว้างหน้าจอ (Viewport Width) */
-            /* เลข 280 คือขนาดความกว้างเดิมของ Widget ถ้าหารแล้วจะได้สัดส่วนที่พอดีจอ */
-            transform: scale(calc(100vw / 280)); 
-            
-            /* หากจอเป็นแนวตั้งและมันล้น ให้ใช้ตัวเลือกนี้แทน (เลือกอย่างใดอย่างหนึ่ง) */
-            /* transform: scale(calc(100vh / 450)); */
-            
-            transform-origin: center center;
-        }
-
-        /* บังคับให้ Widget ข้างในไม่ตัดขอบ */
-        [name="airvisual_widget"] {
-            min-width: 280px !important;
+        /* 2. เทคนิคขยาย Widget ให้เต็มจอ */
+        .widget-container {
+            transform: scale(3.5); /* ปรับตัวเลขนี้ (3.5) เพื่อเพิ่ม/ลดขนาดตามความเหมาะสม */
+            transform-origin: center;
         }
     </style>
 </head>
 <body>
 
-    <div class="airvisual-wrapper">
+    <div class="widget-container">
         <div name="airvisual_widget" key="698d4915a59890a8eae563e2"></div>
     </div>
 
