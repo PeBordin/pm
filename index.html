@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AirVisual Widget</title>
+    <title>Air Quality Fullscreen</title>
     <style>
+        /* 1. ตั้งค่าหน้ากระดาษให้เป็น 1920x1080 */
         body, html {
             margin: 0;
             padding: 0;
-            overflow: hidden; /* ซ่อน scrollbar */
-            background-color: transparent; /* ทำให้พื้นหลังโปร่งใสถ้าจอรองรับ */
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            background-color: #ffffff; /* เปลี่ยนสีพื้นหลังได้ตามใจชอบ */
             display: flex;
-            justify-content: center; /* จัดกลางแนวนอน */
-            align-items: center;    /* จัดกลางแนวตั้ง */
-            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 2. เทคนิคขยาย Widget ให้เต็มจอ */
+        .widget-container {
+            transform: scale(3.5); /* ปรับตัวเลขนี้ (3.5) เพื่อเพิ่ม/ลดขนาดตามความเหมาะสม */
+            transform-origin: center;
         }
     </style>
 </head>
 <body>
 
-    <div name="airvisual_widget" key="698d4915a59890a8eae563e2"></div>
+    <div class="widget-container">
+        <div name="airvisual_widget" key="698d4915a59890a8eae563e2"></div>
+    </div>
+
     <script type="text/javascript" src="https://widget.iqair.com/script/widget_v3.0.js"></script>
 
 </body>
