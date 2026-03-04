@@ -3,42 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Quality Responsive Fullscreen</title>
+    <title>Air Quality Full Screen Fit</title>
     <style>
-        /* 1. ตั้งค่าพื้นฐานให้เต็มพื้นที่จอเสมอ */
-        html, body {
+        * {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* ป้องกัน scrollbar */
-            display: flex;
-            justify-content: center; /* จัดกลางแนวนอน */
-            align-items: center;    /* จัดกลางแนวตั้ง */
-            background-color: #ffffff; 
+            box-sizing: border-box;
         }
 
-        /* 2. ส่วนควบคุมการขยาย (Responsive Scaling) */
-        .scaler-container {
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* คำนวณขนาด: 100vw คือความกว้างจอ, 300px คือขนาดประมาณของ widget */
-            /* สูตรนี้จะทำให้ widget ขยายใหญ่ตามความกว้างจอโดยอัตโนมัติ */
-            transform: scale(calc(100vw / 320)); 
-            transform-origin: center;
-            width: 300px; /* ล็อคขนาดต้นฉบับไว้เพื่อการคำนวณ scale */
         }
 
-        /* ป้องกันภาพแตกหรือเบลอเมื่อขยายใหญ่ */
+        /* ส่วนควบคุมการขยายร่าง */
+        .airvisual-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 280px; /* ขนาดตั้งต้นของ Widget */
+            height: 400px; /* ความสูงโดยประมาณของ Widget */
+            
+            /* ใช้ฟังก์ชันขยายตามความกว้างหน้าจอ (Viewport Width) */
+            /* เลข 280 คือขนาดความกว้างเดิมของ Widget ถ้าหารแล้วจะได้สัดส่วนที่พอดีจอ */
+            transform: scale(calc(100vw / 280)); 
+            
+            /* หากจอเป็นแนวตั้งและมันล้น ให้ใช้ตัวเลือกนี้แทน (เลือกอย่างใดอย่างหนึ่ง) */
+            /* transform: scale(calc(100vh / 450)); */
+            
+            transform-origin: center center;
+        }
+
+        /* บังคับให้ Widget ข้างในไม่ตัดขอบ */
         [name="airvisual_widget"] {
-            image-rendering: -webkit-optimize-contrast;
+            min-width: 280px !important;
         }
     </style>
 </head>
 <body>
 
-    <div class="scaler-container">
+    <div class="airvisual-wrapper">
         <div name="airvisual_widget" key="698d4915a59890a8eae563e2"></div>
     </div>
 
