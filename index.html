@@ -3,31 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Quality Fullscreen</title>
+    <title>Air Quality Responsive Fullscreen</title>
     <style>
-        /* 1. ตั้งค่าหน้ากระดาษให้เป็น 1920x1080 */
-        body, html {
+        /* 1. ตั้งค่าพื้นฐานให้เต็มพื้นที่จอเสมอ */
+        html, body {
             margin: 0;
             padding: 0;
-            width: 1920px;
-            height: 1080px;
-            overflow: hidden;
-            background-color: #ffffff; /* เปลี่ยนสีพื้นหลังได้ตามใจชอบ */
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* ป้องกัน scrollbar */
+            display: flex;
+            justify-content: center; /* จัดกลางแนวนอน */
+            align-items: center;    /* จัดกลางแนวตั้ง */
+            background-color: #ffffff; 
+        }
+
+        /* 2. ส่วนควบคุมการขยาย (Responsive Scaling) */
+        .scaler-container {
             display: flex;
             justify-content: center;
             align-items: center;
+            /* คำนวณขนาด: 100vw คือความกว้างจอ, 300px คือขนาดประมาณของ widget */
+            /* สูตรนี้จะทำให้ widget ขยายใหญ่ตามความกว้างจอโดยอัตโนมัติ */
+            transform: scale(calc(100vw / 320)); 
+            transform-origin: center;
+            width: 300px; /* ล็อคขนาดต้นฉบับไว้เพื่อการคำนวณ scale */
         }
 
-        /* 2. เทคนิคขยาย Widget ให้เต็มจอ */
-        .widget-container {
-            transform: scale(3.5); /* ปรับตัวเลขนี้ (3.5) เพื่อเพิ่ม/ลดขนาดตามความเหมาะสม */
-            transform-origin: center;
+        /* ป้องกันภาพแตกหรือเบลอเมื่อขยายใหญ่ */
+        [name="airvisual_widget"] {
+            image-rendering: -webkit-optimize-contrast;
         }
     </style>
 </head>
 <body>
 
-    <div class="widget-container">
+    <div class="scaler-container">
         <div name="airvisual_widget" key="698d4915a59890a8eae563e2"></div>
     </div>
 
