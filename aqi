@@ -126,7 +126,7 @@
 
     <script>
         const TOKEN = '7b1855999d1e30206e4beffd05616884b1f3e716';
-        const CMU_STATIONS = ['@99490', '@365722', 'chiang-mai-university', 'chiangmai'];
+        const CMU_STATIONS = ['@99490', '@344371', 'chiang-mai-university', 'CMU'];
 
         function updateClock() {
             const now = new Date();
